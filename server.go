@@ -60,8 +60,14 @@ func main() {
 			types = strings.Split(param, ",")
 		}
 
-		ticker := time.NewTicker(time.Second)
-		defer ticker.Stop()
+		ticker := make(chan time.Time)
+
+		go func() {
+			for {
+				ticker <- time.Now()
+				time.Sleep((time.Duration(rand.Int() % 2000)) * time.Millisecond)
+			}
+		}()
 
 		// Don't close the connection, instead loop endlessly.
 		for {
@@ -70,7 +76,7 @@ func main() {
 			case <-done:
 				break
 
-			case t := <-ticker.C:
+			case t := <-ticker:
 				msg := fmt.Sprintf("Connection: %s<br>Message: %s<br>Current Time: %s<br>Random Content: %s<br>", connectionID, convert.String(counter), t.Format("2006-01-02 3:04:05"), convert.String(rand.Int()))
 				if len(types) > 0 {
 					eventType := types[rand.Int()%len(types)]

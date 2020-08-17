@@ -7,6 +7,11 @@
 				border: solid 1px gray;
 				margin-bottom: 20px;
 			}
+
+			.htmx-settling {
+				border:solid 3px red!important;
+				padding:8px!important;
+			}
 		</style>
 	</head>
 
@@ -16,6 +21,11 @@
 		<div class="container" hx-sse="/eventStream"></div>
 		<div class="container" hx-sse="/eventStream"></div>
 		<div class="container" hx-sse="/eventStream"></div>
+
+		<h3>Settling Options</h3>
+		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:250ms"></div>
+		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:500ms"></div>
+		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:750ms"></div>
 
 		<h3>Multiple Listeners, split across different events</h3>
 		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
