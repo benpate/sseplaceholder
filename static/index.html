@@ -32,5 +32,9 @@
 		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
 		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
 		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
+
+		<h3>Target</h3>
+		<div class="container" hx-sse="/eventStream?types=Event3 Event3" hx-target="#otherNode">I am the SSE node, but I don't get swapped.</div>
+		<div class="container" id="otherNode"></div>
 	</body>
 </html>
