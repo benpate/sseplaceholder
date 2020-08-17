@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script src="/htmx/src/htmx.js"></script>
+		<style>
+			.container {
+				padding: 10px;
+				border: solid 1px gray;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h3>Multiple Listeners. message only</h3>
+		<div class="container" hx-sse="/eventStream"></div>
+		<div class="container" hx-sse="/eventStream"></div>
+		<div class="container" hx-sse="/eventStream"></div>
+
+		<h3>Multiple Listeners, split across different events</h3>
+		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
+		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
+		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
+		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
+	</body>
+</html>
