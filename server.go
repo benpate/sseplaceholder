@@ -77,12 +77,15 @@ func main() {
 				break
 
 			case t := <-ticker:
-				msg := fmt.Sprintf("Connection: %s<br>Message: %s<br>Current Time: %s<br>Random Content: %s<br>", connectionID, convert.String(counter), t.Format("2006-01-02 3:04:05"), convert.String(rand.Int()))
+
+				msg := fmt.Sprintf("<div>Connection: %s<br>Message: %s<br>Current Time: %s<br>Random Content: %s<br>", connectionID, convert.String(counter), t.Format("2006-01-02 3:04:05"), convert.String(rand.Int()))
+
 				if len(types) > 0 {
 					eventType := types[rand.Int()%len(types)]
 					fmt.Fprintf(w, "event: %s\n", eventType)
 					msg = msg + "Event Type: " + eventType
 				}
+				msg = msg + fmt.Sprintf("</div><div id=\"oob-target\" hx-swap-oob=\"true\" class=\"container\">OOB Swap from ConnectionID: %s<br>Message Number: %s</div>", connectionID, convert.String(counter))
 				fmt.Fprintf(w, "data: %s\n\n", msg)
 
 				// Flush the response.  This is only possible if the response supports streaming.
