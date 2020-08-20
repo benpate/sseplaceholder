@@ -11,6 +11,11 @@
 			<a href="/">Home</a>
 
 			<h3>Infinite Scroll - Take 1</h3>
+			<div>
+				This works really well *scrolling down* but all nodes are lost when they scroll off the top of the window.  
+				To fix this, we'll need to give HTMX a way to go "back" to previous records/pages.  <a href="https://github.com/bigskysoftware/htmx/issues/130#issuecomment-677694208">Here's my suggestion.</a>
+			</div>
+			<br>
 
 			<div hx-get="/page/1" hx-trigger="load"></div>
 	</body>
