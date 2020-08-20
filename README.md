@@ -1,3 +1,43 @@
-## Server Sent Events - Example Server
+## SSE Placeholder
 
-This is a quick-and-dirty server that generates Server Sent Events for a web browser to read.  I'm using it to test SSE support in HTMX.  Feel free to use or adapt this code as needed to test your own SSE implementations.
+SSE Placeholder is a simple service that generates Server Sent Events for your test pages to read.  It streams fake data from [jsonplaceholder](https://jsonplaceholder.typicode.com) to your website on a semi-regular schedule.
+
+## JSON Event Streams
+Streams random JSON records every second (or so) to your client.
+
+**/posts/sse.json**
+
+**/comments/sse.json**
+
+**/albums/sse.json**
+
+**/photos/sse.json**
+
+**/todos/sse.json**
+
+**/users/sse.json**
+
+
+## HTML Event Streams
+Streams random HTML fragments every second (or so) to your client.
+
+**/posts/sse.html**
+
+**/comments/sse.html**
+
+**/albums/sse.html**
+
+**/photos/sse.html**
+
+**/todos/sse.html**
+
+**/users/sse.html**
+
+## HTMX Demos
+Includes several other demo pages that use [HTMX](https://htmx.org) to load remote data.
+
+---
+
+It is inspired by [jsonplaceholder](https://jsonplaceholder.typicode.com) -- *"a free online REST API that you can use whenever you need some fake data."* 
+
+Also, thanks to [HTMX](https://htmx.org) working and testing this code was the original reason for putting this code together.

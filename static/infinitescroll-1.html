@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css">
+		<script src="/htmx?src=https://raw.githubusercontent.com/benpate/htmx/pullrequest-limits/src/htmx.js"></script>
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<a href="/">Home</a>
+
+			<h3>Infinite Scroll - Take 1</h3>
+
+			<div hx-get="/page/1" hx-trigger="load"></div>
+	</body>
+</html>

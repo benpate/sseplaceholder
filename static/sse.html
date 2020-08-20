@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css">
+		<script src="/htmx?src=https://raw.githubusercontent.com/benpate/htmx/pullrequest-serverSentEvents-redesign-withMultipleEvents/src/htmx.js"></script>
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<a href="/">Home</a>
+
+			<h3>Multiple Listeners. message only</h3>
+			<div class="container" hx-sse="/posts/sse.html">Waiting for Posts...</div>
+			<div class="container" hx-sse="/comments/sse.html">Waiting for Comments...</div>
+			<div class="container" hx-sse="/albums/sse.html">Waiting for Albums...</div>
+			<div class="container" hx-sse="/todos/sse.html">Waiting for ToDos...</div>
+			<div class="container" hx-sse="/users/sse.html">Waiting for Users...</div>
+		</div>
+	</body>
+</html>

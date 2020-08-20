@@ -1,48 +1,51 @@
 <html>
 	<head>
-		<script src="/htmx/src/htmx.js"></script>
-		<style>
-			.container {
-				padding: 10px;
-				border: solid 1px gray;
-				margin-bottom: 20px;
-			}
-
-			.htmx-settling {
-				border:solid 3px red!important;
-				padding:8px!important;
-			}
-		</style>
+		<link rel="stylesheet" href="/stylesheet.css">
 	</head>
 
 	<body>
 
-		<!--
-		<h3>Multiple Listeners. message only</h3>
-		<div class="container" hx-sse="/eventStream"></div>
-		<div class="container" hx-sse="/eventStream"></div>
-		<div class="container" hx-sse="/eventStream"></div>
+		<div id="page">
+			<h1>SSE Placeholder</h1>
 
-		<h3>Settling Options</h3>
-		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:250ms"></div>
-		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:500ms"></div>
-		<div class="container" hx-sse="/eventStream" hx-swap="innerHTML settle:750ms"></div>
+			<div>
+				<a href="https://github.com/benpate/sseplaceholder">Github</a>
+			</div>
 
-		<h3>Multiple Listeners, split across different events</h3>
-		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
-		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event1"></div>
-		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
-		<div class="container" hx-sse="/eventStream?types=Event1,Event2 Event2"></div>
+			<div>
+				SSE Placeholder is a simple service that generates Server Sent Events for your test pages to read.  
+				It streams fake data from <a href="jsonplaceholder.typicode.com">jsonplaceholder</a> to your website on a semi-regular schedule every 0.5 - 2.0 seconds.
+			</div>
 
-		<h3>Target</h3>
-		<div class="container" hx-sse="/eventStream?types=Event3 Event3" hx-target="#otherNode">I am the SSE node, but I don't get swapped.</div>
-		<div class="container" id="otherNode"></div>
+			<h3>Server Sent Event in JSON</h3>
+			<ul>
+				<li><a href="/posts/sse.json">/posts/sse.json</a></li>
+				<li><a href="/comments/sse.json">/comments/sse.json</a></li>
+				<li><a href="/albums/sse.json">/albums/sse.json</a></li>
+				<li><a href="/photos/sse.json">/photos/sse.json</a></li>
+				<li><a href="/todos/sse.json">/todos/sse.json</a></li>
+				<li><a href="/users/sse.json">/users/sse.json</a></li>
+			</ul>
 
-		<h3>OOB Swaps</h3>
-		<div id="oob-target" class="container"></div>
-		-->
-		<h3>Limit Children</h3>
+			<h3>Server Sent Event in HTML</h3>
+			<ul>
+				<li><a href="/posts/sse.html">/posts/sse.html</a></li>
+				<li><a href="/comments/sse.html">/comments/sse.html</a></li>
+				<li><a href="/albums/sse.html">/albums/sse.html</a></li>
+				<li><a href="/photos/sse.html">/photos/sse.html</a></li>
+				<li><a href="/todos/sse.html">/todos/sse.html</a></li>
+				<li><a href="/users/sse.html">/users/sse.html</a></li>
+			</ul>
 
-		<div hx-get="/page/1" hx-trigger="load"></div>
+			<h3>HTMX Demo Pages</h3>
+			<ul>
+				<li><a href="/sse.html">Multiple SSE URLs</a></li>
+				<li><a href="/sse-multichannel.html">Single URL / Multiple Streams</a></li>
+				<li><a href="/sse-settle.html">Settling options</a></li>
+				<li><a href="/sse-target.html">Targeting options</a></li>
+				<br>
+				<li><a href="/infinitescroll-1.html">Infinite Scroll Take 1</a> hx-swap="afterend limit:10" hx-trigger="revealed"</li>
+			</ul>
+		</div>
 	</body>
 </html>

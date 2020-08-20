@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css">
+		<script src="/htmx?src=https://raw.githubusercontent.com/benpate/htmx/pullrequest-serverSentEvents-redesign-withMultipleEvents/src/htmx.js"></script>
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<a href="/">Home</a>
+
+			<h3>Multiple Listeners using HX-Target to write to a single target node.</h3>
+			<div hx-sse="/posts/sse.html" hx-target="#otherNode"></div>
+			<div hx-sse="/comments/sse.html" hx-target="#otherNode"></div>
+			<div hx-sse="/albums/sse.html" hx-target="#otherNode"></div>
+			<div hx-sse="/todos/sse.html" hx-target="#otherNode"></div>
+			<div hx-sse="/users/sse.html" hx-target="#otherNode"></div>
+
+			<div class="container" id="otherNode">Waiting for records from any of: Posts/Comments/Albums/ToDos/Users</div>
+		</div>
+	</body>
+</html>

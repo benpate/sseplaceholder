@@ -35,6 +35,7 @@ github.com/benpate/derp v0.14.0/go.mod h1:Zne8hUcv/ljV0xIDe58OIbcSSEl7Ckm81oWZ5N
 github.com/benpate/derp v0.14.1 h1:rX2+hueHnpbmZXTQiiQ0lmEn3LLoSSpsUVcCLaq9pxs=
 github.com/benpate/derp v0.14.1/go.mod h1:Zne8hUcv/ljV0xIDe58OIbcSSEl7Ckm81oWZ5NCozz0=
 github.com/benpate/form v0.2.1/go.mod h1:+PXe0nrD+fSw6GtdRrDkudvFdu6gx+kuRrBtFRU3ml0=
+github.com/benpate/html v0.0.1 h1:VgsDgLstdfKBREqVf50MxzCwL8qr+i2ZHjToIwkdVME=
 github.com/benpate/html v0.0.1/go.mod h1:yUTnTs33Oaai+fGussYCAgMXJGKVD2VRTMJ6MkQ8GsE=
 github.com/benpate/list v0.2.0/go.mod h1:uemdCNP+Ycdcamt3XMLtA5g1Zv8ukCC1ClaN+ppX5og=
 github.com/benpate/null v0.4.1 h1:Cp+Xz7O5ZJyue1bLUEtwVq3+WUkozsJBQxIKWxJJH+A=
@@ -42,6 +43,7 @@ github.com/benpate/null v0.4.1/go.mod h1:Nbm9Q2f+usSG1Ddt6CoFKamzlojzbaNIB7dtr3n
 github.com/benpate/path v0.1.2/go.mod h1:Dd/z5YMpB/dxGNC9GYI4RILDvXvv15wcst0ZRa1LJrI=
 github.com/benpate/path v0.1.3/go.mod h1:oEiFP2GCCd0dDDjcdnyZbeTKk+SxD+JSChnbI4TNAmg=
 github.com/benpate/presto v0.8.0/go.mod h1:B3k4UfN66ZC1GOzHCdtp29cUS9lViKsM1pugWYXv2J8=
+github.com/benpate/remote v0.5.8 h1:OWV/AmovHRjFlPW4cJL+IflQl8CzCEMTbr4BAzQah/c=
 github.com/benpate/remote v0.5.8/go.mod h1:S9GHq4YaLr+FXHb6CnTEZ5dsYOcZWPY1qmSo0/8Jhx8=
 github.com/benpate/schema v0.7.1/go.mod h1:xyOT2YqGkcE5TtrTKwDmYQRCnGCT7J/aF5CGzOtNKmA=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=

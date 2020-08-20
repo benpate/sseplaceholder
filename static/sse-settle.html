@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/stylesheet.css">
+		<script src="/htmx?src=https://raw.githubusercontent.com/benpate/htmx/pullrequest-serverSentEvents-redesign-withMultipleEvents/src/htmx.js"></script>
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<a href="/">Home</a>
+
+			<h3>Settling Options</h3>
+			<div class="container" hx-sse="/comments/sse.html" hx-swap="innerHTML settle:100ms">Waitig for Comments...</div>
+			<div class="container" hx-sse="/comments/sse.html" hx-swap="innerHTML settle:200ms">Waitig for Comments...</div>
+			<div class="container" hx-sse="/comments/sse.html" hx-swap="innerHTML settle:300ms">Waitig for Comments...</div>
+			<div class="container" hx-sse="/comments/sse.html" hx-swap="innerHTML settle:400ms">Waitig for Comments...</div>
+			<div class="container" hx-sse="/comments/sse.html" hx-swap="innerHTML settle:500ms">Waitig for Comments...</div>
+		</div>
+	</body>
+</html>
