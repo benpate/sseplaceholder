@@ -17,6 +17,7 @@
 
 	<body>
 
+		<!--
 		<h3>Multiple Listeners. message only</h3>
 		<div class="container" hx-sse="/eventStream"></div>
 		<div class="container" hx-sse="/eventStream"></div>
@@ -39,5 +40,9 @@
 
 		<h3>OOB Swaps</h3>
 		<div id="oob-target" class="container"></div>
+		-->
+		<h3>Limit Children</h3>
+
+		<div hx-get="/page/1" hx-trigger="load"></div>
 	</body>
 </html>

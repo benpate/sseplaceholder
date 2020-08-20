@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -21,6 +22,23 @@ func main() {
 
 	e.Static("/", "static")
 	e.Static("/htmx", "../htmx")
+
+	e.GET("/page/:number", func(ctx echo.Context) error {
+
+		pageNumber, err := strconv.Atoi(ctx.Param("number"))
+
+		if err != nil {
+			pageNumber = 1
+		}
+
+		thisPage := strconv.Itoa(pageNumber)
+		nextPage := strconv.Itoa(pageNumber + 1)
+		random := strconv.Itoa(rand.Int())
+
+		content := fmt.Sprintf(`<div class="container" hx-get="/page/%s" hx-swap="afterend limit:10" hx-trigger="revealed">This is page %s<br><br>Randomly generated <b>HTML</b> %s<br><br>I wish I were a haiku.</div>`, nextPage, thisPage, random)
+		return ctx.HTML(200, content)
+	})
+
 	e.GET("/eventStream", func(ctx echo.Context) error {
 
 		done := make(chan bool)
