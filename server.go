@@ -152,7 +152,6 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 
 		done := make(chan bool)
 
-		r := ctx.Request()
 		w := ctx.Response().Writer
 
 		// Make sure that the writer supports flushing.
@@ -205,10 +204,6 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 				f.Flush()
 			}
 		}
-
-		// Done
-		// b.RemoveClient <- client
-		log.Println("Finished HTTP request at ", r.URL.Path)
 
 		return nil
 	}
