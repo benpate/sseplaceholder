@@ -28,6 +28,7 @@ github.com/aws/aws-sdk-go v1.29.15/go.mod h1:1KvfttTE3SPKMpo8g2c6jL3ZKfXtFvKscTg
 github.com/benpate/convert v0.7.1 h1:cOtrcntvAcSE5GO+lVAy4VZMxFdNTqjNynJDZfnQOjQ=
 github.com/benpate/convert v0.7.1/go.mod h1:pcY4F1bLyFeKC6F0CKKzUUJoWiBUfRaM+FxgTU+xG7A=
 github.com/benpate/data v0.8.0/go.mod h1:A+CZnvKife8iIFv9wXKQE4ZtA+hEdR0eGxNt/W20lpI=
+github.com/benpate/derp v0.9.4 h1:tn7LIZe/fo5/9qJ67GZ6QL+nY9jzKX2O0mXdCbN7s5E=
 github.com/benpate/derp v0.9.4/go.mod h1:uk1EoSDvBEkBIOw4J/qeLga2kUCvKukIFFk3YE7Zjtk=
 github.com/benpate/derp v0.12.3 h1:Y0rGMPyqC1sb0uZmTKKhOYi4S4Q4HHLuV7TPfPjLS9Y=
 github.com/benpate/derp v0.12.3/go.mod h1:tIAHPj44uS865TVCgkbFzm26nVawvKSVwWRPu+R3wUs=
