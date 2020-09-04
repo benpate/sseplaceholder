@@ -5,33 +5,33 @@ SSE Placeholder is a simple service that generates Server Sent Events for your t
 ## JSON Event Streams
 Streams random JSON records every second (or so) to your client.
 
-**/posts/sse.json**
+**/posts.json**
 
-**/comments/sse.json**
+**/comments.json**
 
-**/albums/sse.json**
+**/albums.json**
 
-**/photos/sse.json**
+**/photos.json**
 
-**/todos/sse.json**
+**/todos.json**
 
-**/users/sse.json**
+**/users.json**
 
 
 ## HTML Event Streams
 Streams random HTML fragments every second (or so) to your client.
 
-**/posts/sse.html**
+**/posts.html**
 
-**/comments/sse.html**
+**/comments.html**
 
-**/albums/sse.html**
+**/albums.html**
 
-**/photos/sse.html**
+**/photos.html**
 
-**/todos/sse.html**
+**/todos.html**
 
-**/users/sse.html**
+**/users.html**
 
 ## HTMX Demos
 Includes several other demo pages that use [HTMX](https://htmx.org) to load remote data.
