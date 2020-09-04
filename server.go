@@ -45,18 +45,18 @@ func main() {
 	e.Static("/", "static")
 
 	// JSON Event Streams
-	e.GET("/posts/sse.json", handleStream(makeStream(data["posts"], jsonFormatFunc)))
-	e.GET("/comments/sse.json", handleStream(makeStream(data["comments"], jsonFormatFunc)))
-	e.GET("/albums/sse.json", handleStream(makeStream(data["albums"], jsonFormatFunc)))
-	e.GET("/todos/sse.json", handleStream(makeStream(data["todos"], jsonFormatFunc)))
-	e.GET("/users/sse.json", handleStream(makeStream(data["users"], jsonFormatFunc)))
+	e.GET("/posts.json", handleStream(makeStream(data["posts"], jsonFormatFunc)))
+	e.GET("/comments.json", handleStream(makeStream(data["comments"], jsonFormatFunc)))
+	e.GET("/albums.json", handleStream(makeStream(data["albums"], jsonFormatFunc)))
+	e.GET("/todos.json", handleStream(makeStream(data["todos"], jsonFormatFunc)))
+	e.GET("/users.json", handleStream(makeStream(data["users"], jsonFormatFunc)))
 
 	// HTML Event Streams (with HTMX extension tags)
-	e.GET("/posts/sse.html", handleStream(makeStream(data["posts"], postTemplate())))
-	e.GET("/comments/sse.html", handleStream(makeStream(data["comments"], commentTemplate())))
-	e.GET("/albums/sse.html", handleStream(makeStream(data["albums"], albumTemplate())))
-	e.GET("/todos/sse.html", handleStream(makeStream(data["todos"], todoTemplate())))
-	e.GET("/users/sse.html", handleStream(makeStream(data["users"], userTemplate())))
+	e.GET("/posts.html", handleStream(makeStream(data["posts"], postTemplate())))
+	e.GET("/comments.html", handleStream(makeStream(data["comments"], commentTemplate())))
+	e.GET("/albums.html", handleStream(makeStream(data["albums"], albumTemplate())))
+	e.GET("/todos.html", handleStream(makeStream(data["todos"], todoTemplate())))
+	e.GET("/users.html", handleStream(makeStream(data["users"], userTemplate())))
 
 	e.GET("/htmx", func(ctx echo.Context) error {
 		var result string
