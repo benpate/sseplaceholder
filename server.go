@@ -205,6 +205,7 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 					fmt.Fprintf(w, "event: %s\n", eventType)
 				}
 
+				message = strings.Replace(message, "\n", " ", -1)
 				message = strings.Replace(message, "[[eventType]]", eventType, 1)
 
 				fmt.Fprintf(w, "data: %s\n\n", message)
