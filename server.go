@@ -102,7 +102,8 @@ func postTemplate() formatFunc {
 		<div>
 			<div class="bold">Post: {{.title}}</div>
 			<div>{{.body}}</div>
-			<div>id: {{.id}} user: {{.userId}}</div>
+			<div>id: {{.id}}</div>
+			<div>user: {{.userId}}</div>
 			<div>event: [[eventType]]</div>
 		</div>`)
 }
