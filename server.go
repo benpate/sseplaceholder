@@ -103,6 +103,7 @@ func postTemplate() formatFunc {
 			<div class="bold">Post: {{.title}}</div>
 			<div>{{.body}}</div>
 			<div>id: {{.id}} user: {{.userId}}</div>
+			<div>event: %eventType</div>
 		</div>`)
 }
 
@@ -114,6 +115,7 @@ func commentTemplate() formatFunc {
 			<div class="bold">Comment: {{.name}}</div>
 			<div>{{.email}}</div>
 			<div>{{.body}}</div>
+			<div>event: [[eventType]]</div>
 		</div>`)
 }
 
@@ -123,6 +125,7 @@ func albumTemplate() formatFunc {
 		<div>
 			<div class="bold">Album: {{.title}}</div>
 			<div>id: {{.id}}</div>
+			<div>event: [[eventType]]</div>
 		</div>`)
 }
 
@@ -131,7 +134,8 @@ func todoTemplate() formatFunc {
 	return templateFormatFunc("todo.html", `
 		<div>
 			<div class="bold">ToDo:{{.id}}: {{.title}}</div>
-			<div>Complete? {{.completed}}</div>
+			<div>complete? {{.completed}}</div>
+			<div>event: [[eventType]]</div>
 		</div>`)
 }
 
@@ -142,6 +146,7 @@ func userTemplate() formatFunc {
 			<div class="bold">User: {{.name}} / {{.username}}</div>
 			<div>{{.email}}</div>
 			<div>{{.address.street}} {{.address.suite}}<br>{{.address.city}}, {{.address.zipcode}}</div>
+			<div>event: [[eventType]]</div>
 		</div>`)
 }
 
@@ -193,10 +198,14 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 
 			case message := <-eventSource:
 
+				var eventType string
+
 				if len(types) > 0 {
-					eventType := types[rand.Int()%len(types)]
+					eventType = types[rand.Int()%len(types)]
 					fmt.Fprintf(w, "event: %s\n", eventType)
 				}
+
+				message = strings.Replace(message, "[[eventType]]", eventType, 1)
 
 				fmt.Fprintf(w, "data: %s\n\n", message)
 
