@@ -14,8 +14,7 @@ import (
 	"time"
 
 	"github.com/benpate/derp"
-	"github.com/benpate/html"
-	"github.com/benpate/remote"
+	"github.com/benpate/htmlconv"
 	"github.com/labstack/echo/v4"
 )
 
@@ -58,16 +57,7 @@ func main() {
 	e.GET("/todos.html", handleStream(makeStream(data["todos"], todoTemplate())))
 	e.GET("/users.html", handleStream(makeStream(data["users"], userTemplate())))
 
-	e.GET("/htmx", func(ctx echo.Context) error {
-		var result string
-
-		if err := remote.Get(ctx.QueryParam("src")).Response(&result, &result).Send(); err != nil {
-			return err
-		}
-
-		ctx.Request().Header.Set("mime-type", "text/javascript")
-		return ctx.String(200, result)
-	})
+	e.Static("/htmx", "../htmx/src")
 
 	e.GET("/page/:number", func(ctx echo.Context) error {
 
@@ -81,7 +71,7 @@ func main() {
 		nextPage := strconv.Itoa(pageNumber + 1)
 		random := strconv.Itoa(rand.Int())
 
-		template := html.CollapseWhitespace(`
+		template := htmlconv.CollapseWhitespace(`
 			<div class="container" hx-get="/page/%s" hx-swap="afterend limit:10" hx-trigger="revealed">
 				This is page %s<br><br>
 				Randomly generated <b>HTML</b> %s<br><br>
@@ -195,7 +185,7 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 
 			select {
 			case <-done:
-				break
+				return nil
 
 			case message := <-eventSource:
 
@@ -215,8 +205,6 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 				f.Flush()
 			}
 		}
-
-		return nil
 	}
 }
 
@@ -230,7 +218,7 @@ func makeStream(data []interface{}, format formatFunc) chan string {
 		for {
 			for _, record := range data {
 				result <- format(record)
-				time.Sleep((time.Duration(100 + rand.Int()%1000)) * time.Millisecond)
+				time.Sleep((time.Duration(rand.Int() % 500)) * time.Millisecond)
 
 			}
 		}
@@ -246,7 +234,7 @@ func jsonFormatFunc(data interface{}) string {
 
 func templateFormatFunc(name string, text string) formatFunc {
 
-	f, _ := template.New(name).Parse(html.CollapseWhitespace(text))
+	f, _ := template.New(name).Parse(htmlconv.CollapseWhitespace(text))
 
 	return func(data interface{}) string {
 
