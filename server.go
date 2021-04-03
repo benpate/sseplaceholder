@@ -146,8 +146,6 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 
 	return func(ctx echo.Context) error {
 
-		done := make(chan bool)
-
 		w := ctx.Response().Writer
 
 		// Make sure that the writer supports flushing.
@@ -157,15 +155,7 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 			return derp.New(500, "handler.ServerSentEvent", "Streaming Not Supported")
 		}
 
-		// Listen to the closing of the http connection via the CloseNotifier
-		if closeNotifier, ok := w.(http.CloseNotifier); ok {
-			notify := closeNotifier.CloseNotify()
-			go func() {
-				<-notify
-				log.Println("HTTP connection just closed.")
-				done <- true
-			}()
-		}
+		c := ctx.Request().Context()
 
 		// Set the headers related to event streaming.
 		w.Header().Set("Content-Type", "text/event-stream")
@@ -184,7 +174,8 @@ func handleStream(eventSource chan string) echo.HandlerFunc {
 		for {
 
 			select {
-			case <-done:
+			case <-c.Done():
+				log.Println("HTTP connection just closed.")
 				return nil
 
 			case message := <-eventSource:
