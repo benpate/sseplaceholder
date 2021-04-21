@@ -1,71 +1,77 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="/stylesheet.css">
-	</head>
+<head>
+	<link rel="stylesheet" href="/stylesheet.css">
+</head>
 
-	<body>
+<body>
 
-		<div id="page">
-			<h1>SSE Placeholder</h1>
+	<div id="page">
+		<h1>SSE Placeholder</h1>
 
-			<div>
-				SSE Placeholder is a simple service that generates Server Sent Events for your test pages to read.  
-				It streams fake data from <a href="jsonplaceholder.typicode.com">jsonplaceholder</a> to your website on a semi-regular schedule every 0.5 - 2.0 seconds.
-			</div>
-
-			<h3>Server Sent Events in JSON</h3>
-			<ul>
-				<li><a href="/posts.json">/posts.json</a></li>
-				<li><a href="/comments.json">/comments.json</a></li>
-				<li><a href="/albums.json">/albums.json</a></li>
-				<li><a href="/photos.json">/photos.json</a></li>
-				<li><a href="/todos.json">/todos.json</a></li>
-				<li><a href="/users.json">/users.json</a></li>
-			</ul>
-
-			<h3>Server Sent Events in HTML</h3>
-			<ul>
-				<li><a href="/posts.html">/posts.html</a></li>
-				<li><a href="/comments.html">/comments.html</a></li>
-				<li><a href="/albums.html">/albums.html</a></li>
-				<li><a href="/photos.html">/photos.html</a></li>
-				<li><a href="/todos.html">/todos.html</a></li>
-				<li><a href="/users.html">/users.html</a></li>
-			</ul>
-
-			<h3>How Does It Work?</h3>
-			<div>
-				When you open one of the URLs below, this little server generates new <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server Sent Events</a> 
-				that are delivered to your test pages in either JSON or HTML format at random intervals.  You can also specify a few options when you connect, using URL parameters:
-				<br><br>
-				<table border="1" cellspacing="0" cellpadding="10">
-					<tr>
-						<td>No Event Name</td>
-						<td>Do not specify an event name to test "onmessage" event handlers<br>
-							<pre>/posts.html</pre>
-						</td>
-					</tr>
-					<tr>
-						<td>One Event Name</td>
-						<td>Specify a single event name to test one named event handlers<br>
-						<pre>/posts.html?eventType=Name1</pre>
-						</td>
-					</tr>
-					<tr>
-						<td>Multiple Event Name</td>
-						<td>Specify a multiple event names to test several named event handlers.  The server will randomly choose an name for each new record.<br>
-							<pre>/posts.html?eventType=Name1,Name2</pre>
-						</td>
-					</tr>
-				</table>
-			</div>
-
-		</div>
-
-		<br>
-		<br>
 		<div>
-			<a href="https://github.com/benpateplaceholder">GitHub</a>
+			SSE Placeholder is a simple service that generates Server Sent Events for your test pages to read.  
+			It streams fake data from <a href="jsonplaceholder.typicode.com">jsonplaceholder</a> to your website on a semi-regular schedule every 0.5 - 2.0 seconds.
 		</div>
+
+		<h3>Server Sent Events in JSON</h3>
+		<ul>
+			<li><a href="/posts.json">/posts.json</a></li>
+			<li><a href="/comments.json">/comments.json</a></li>
+			<li><a href="/albums.json">/albums.json</a></li>
+			<li><a href="/photos.json">/photos.json</a></li>
+			<li><a href="/todos.json">/todos.json</a></li>
+			<li><a href="/users.json">/users.json</a></li>
+		</ul>
+
+		<h3>Server Sent Events in HTML</h3>
+		<ul>
+			<li><a href="/posts.html">/posts.html</a></li>
+			<li><a href="/comments.html">/comments.html</a></li>
+			<li><a href="/albums.html">/albums.html</a></li>
+			<li><a href="/photos.html">/photos.html</a></li>
+			<li><a href="/todos.html">/todos.html</a></li>
+			<li><a href="/users.html">/users.html</a></li>
+		</ul>
+
+		<h3>How Does It Work?</h3>
+		<div>
+			When you open one of the URLs below, this little server generates new <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server Sent Events</a> 
+			that are delivered to your test pages in either JSON or HTML format at random intervals.  You can also specify a few options when you connect, using URL parameters:
+			<br><br>
+			<table border="1" cellspacing="0" cellpadding="10">
+				<tr>
+					<td>No Event Name</td>
+					<td>Do not specify an event name to test "onmessage" event handlers<br>
+						<pre>/posts.html</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>One Event Name</td>
+					<td>Specify a single event name to test one named event handlers<br>
+					<pre>/posts.html?eventType=Name1</pre>
+					</td>
+				</tr>
+				<tr>
+					<td>Multiple Event Name</td>
+					<td>Specify a multiple event names to test several named event handlers.  The server will randomly choose an name for each new record.<br>
+						<pre>/posts.html?eventType=Name1,Name2</pre>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<h3>Example</h3>
+
+		This box uses <a href="https://htmx.org">htmx</a> to connect to an SSE stream and swap it into view.
+		<div hx-sse="connect:/comments.html swap:message" class="demo">Connecting...</div>
+
+	</div>
+
+	<br>
+	<br>
+	<div>
+		<a href="https://github.com/benpateplaceholder">GitHub</a>
+	</div>
+	<script src="https://unpkg.com/htmx.org" defer></script>
 </body>
 </html>

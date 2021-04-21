@@ -21,3 +21,11 @@ body {
 .bold {
 	font-weight:bold;
 }
+
+.demo {
+	padding:10px;
+	margin:20px 0px;
+	color:white;
+	background-color: #999;
+	height:100px;
+}
