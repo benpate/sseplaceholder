@@ -3,8 +3,6 @@
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/benpate/sseplaceholder)
 [![Go Report Card](https://goreportcard.com/badge/github.com/benpate/sseplaceholder?style=flat-square)](https://goreportcard.com/report/github.com/benpate/sseplaceholder)
 [![Build Status](http://img.shields.io/travis/com/benpate/sseplaceholder.svg?style=flat-square)](https://travis-ci.com/benpate/sseplaceholder)
-[![Codecov](https://img.shields.io/codecov/c/github/benpate/sseplaceholder.svg?style=flat-square)](https://codecov.io/gh/benpate/sseplaceholder)
-
 
 SSE Placeholder is a simple service that generates Server Sent Events for your test pages to read.  It streams fake data from [jsonplaceholder](https://jsonplaceholder.typicode.com) to your website on a semi-regular schedule.
 
