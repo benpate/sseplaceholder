@@ -2,10 +2,10 @@ package main
 
 import (
 	"bytes"
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
@@ -20,18 +20,15 @@ import (
 
 type formatFunc func(interface{}) string
 
+//go:embed static/data.json
+var dataBytes []byte
+
 func main() {
 
 	rand.Seed(time.Now().UnixNano())
 
 	/// Load configuration file
 	var data map[string][]interface{}
-
-	dataBytes, err := ioutil.ReadFile("./static/data.json")
-
-	if err != nil {
-		panic(err.Error())
-	}
 
 	if err := json.Unmarshal(dataBytes, &data); err != nil {
 		panic("Could not unmarshal data: " + err.Error())
@@ -46,6 +43,7 @@ func main() {
 	// JSON Event Streams
 	e.GET("/posts.json", handleStream(makeStream(data["posts"], jsonFormatFunc)))
 	e.GET("/comments.json", handleStream(makeStream(data["comments"], jsonFormatFunc)))
+	e.GET("/photos.json", handleStream(makeStream(data["comments"], jsonFormatFunc)))
 	e.GET("/albums.json", handleStream(makeStream(data["albums"], jsonFormatFunc)))
 	e.GET("/todos.json", handleStream(makeStream(data["todos"], jsonFormatFunc)))
 	e.GET("/users.json", handleStream(makeStream(data["users"], jsonFormatFunc)))
@@ -53,6 +51,7 @@ func main() {
 	// HTML Event Streams (with HTMX extension tags)
 	e.GET("/posts.html", handleStream(makeStream(data["posts"], postTemplate())))
 	e.GET("/comments.html", handleStream(makeStream(data["comments"], commentTemplate())))
+	e.GET("/photos.json", handleStream(makeStream(data["comments"], jsonFormatFunc)))
 	e.GET("/albums.html", handleStream(makeStream(data["albums"], albumTemplate())))
 	e.GET("/todos.html", handleStream(makeStream(data["todos"], todoTemplate())))
 	e.GET("/users.html", handleStream(makeStream(data["users"], userTemplate())))

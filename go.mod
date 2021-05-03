@@ -1,6 +1,6 @@
 module github.com/benpate/sseplaceholder
 
-go 1.15
+go 1.16
 
 require (
 	github.com/benpate/derp v0.20.0
