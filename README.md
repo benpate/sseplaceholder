@@ -1,4 +1,4 @@
-## SSE Placeholder
+# SSE Placeholder
 
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/benpate/sseplaceholder)
 [![Go Report Card](https://goreportcard.com/badge/github.com/benpate/sseplaceholder?style=flat-square)](https://goreportcard.com/report/github.com/benpate/sseplaceholder)
