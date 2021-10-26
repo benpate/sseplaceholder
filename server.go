@@ -58,7 +58,32 @@ func main() {
 
 	e.Static("/htmx", "../htmx/src")
 
+	e.OPTIONS("/page/random", func(ctx echo.Context) error {
+		ctx.Response().Header().Add("Connection", "keep-alive")                 // CORS headers
+		ctx.Response().Header().Add("Access-Control-Allow-Origin", "*")         // CORS headers
+		ctx.Response().Header().Add("Access-Control-Allow-Methods", "GET")      // CORS headers
+		ctx.Response().Header().Add("Access-Control-Allow-Credentials", "true") // CORS headers
+		ctx.Response().Header().Add("Access-Control-Allow-Headers", "*")        // CORS headers
+		ctx.NoContent(200)
+		return nil
+	})
+
+	e.GET("/page/random", func(ctx echo.Context) error {
+		return pageHandler(ctx, rand.Int())
+	})
+
 	e.GET("/page/:number", func(ctx echo.Context) error {
+
+		pageNumber, err := strconv.Atoi(ctx.Param("number"))
+
+		if err != nil {
+			pageNumber = 1
+		}
+
+		return pageHandler(ctx, pageNumber)
+	})
+
+	e.GET("/revealed/:number", func(ctx echo.Context) error {
 
 		pageNumber, err := strconv.Atoi(ctx.Param("number"))
 
@@ -71,7 +96,7 @@ func main() {
 		random := strconv.Itoa(rand.Int())
 
 		template := htmlconv.CollapseWhitespace(`
-			<div class="container" hx-get="/page/%s" hx-swap="afterend limit:10" hx-trigger="revealed">
+			<div class="container" hx-get="/revealed/%s" hx-swap="afterend limit:10" hx-trigger="revealed">
 				This is page %s<br><br>
 				Randomly generated <b>HTML</b> %s<br><br>
 				I wish I were a haiku.
@@ -82,6 +107,26 @@ func main() {
 	})
 
 	e.Logger.Fatal(e.Start(":80"))
+}
+
+func pageHandler(ctx echo.Context, page int) error {
+
+	pageString := strconv.Itoa(page)
+	random := strconv.Itoa(rand.Int())
+
+	template := htmlconv.CollapseWhitespace(`
+		<div>
+			This is page %s<br><br>
+			Randomly generated <b>HTML</b> %s<br><br>
+			I wish I were a haiku.
+		</div>`)
+
+	content := fmt.Sprintf(template, pageString, random)
+	ctx.Response().Header().Add("Access-Control-Allow-Origin", "*")         // CORS headers
+	ctx.Response().Header().Add("Access-Control-Allow-Methods", "GET")      // CORS headers
+	ctx.Response().Header().Add("Access-Control-Allow-Headers", "*")        // CORS headers
+	ctx.Response().Header().Add("Access-Control-Allow-Credentials", "true") // CORS headers
+	return ctx.HTML(200, content)
 }
 
 func postTemplate() formatFunc {
